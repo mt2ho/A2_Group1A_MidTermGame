@@ -418,7 +418,7 @@ function startNewOrder() {
   // Update alien display to normal state
   const alien = orderScreen.querySelector(".alien");
   if (alien) {
-    alien.style.backgroundImage = `url(Assets/alien${currentAlienNumber}_normal.png)`;
+    alien.style.backgroundImage = `url('Assets/alien${currentAlienNumber}_normal.png')`;
   }
 
   try {
@@ -623,7 +623,7 @@ function showFeedback(gradeResult) {
     emotion = "angry";
   }
 
-  const imagePath = `url(Assets/alien${currentAlienNumber}_${emotion}.png)`;
+  const imagePath = `url('Assets/alien${currentAlienNumber}_${emotion}.png')`;
   alien.style.backgroundImage = imagePath;
 
   // Match the order screen background
