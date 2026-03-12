@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cozy Matcha Cafe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Start Screen -->
+    <div id="startScreen" class="screen active simple-screen">
+      <div class="simple-content">
+        <div class="simple-buttons">
+          <button id="startBtn" class="order-btn">Start</button>
+          <button id="instructionsBtn" class="order-btn">How to Play</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day Intro Screen -->
+    <div id="dayIntroScreen" class="screen simple-screen white-screen">
+      <div class="simple-content">
+        <h1 id="dayIntroText" class="simple-title">Day 1</h1>
+      </div>
+    </div>
+
+    <!-- Global Time Box -->
+    <div id="timeBox" class="time-box hidden">
+      <span id="dayNumber" class="day-number">Day 1</span>
+      <span class="clock-icon">🕒</span>
+      <span id="timeText">9:00 AM</span>
+      <div class="satisfaction-bar-container">
+        <div class="satisfaction-bar-bg">
+          <div id="satisfactionBarFill" class="satisfaction-bar-fill"></div>
+        </div>
+
+        <span id="satisfactionBarLabel" class="satisfaction-bar-label"
+          >100%</span
+        >
+
+        <img id="satisfactionEmoji" src="Assets/neutral.png" />
+      </div>
+    </div>
+
+    <!-- Order Taking Screen -->
+    <div id="orderScreen" class="screen">
+      <div class="alien-container">
+        <div class="alien"></div>
+        <div class="text-content">
+          <div class="text-bubble" id="textBubble">
+            <p id="orderText">Loading order...</p>
+          </div>
+          <div class="button-container">
+            <button id="huhBtn" class="order-btn">Huh?</button>
+            <button id="okayBtn" class="order-btn">Okay!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POS System Screen -->
+    <div id="posScreen" class="screen">
+      <div class="pos-container">
+        <img
+          id="posBackgroundImg"
+          src="Assets/POSDay.png"
+          alt="POS Table"
+          class="pos-background"
+        />
+        <div class="pos-interface">
+          <!-- Temperature Section -->
+          <div class="pos-section">
+            <h3 class="pos-subtitle">Temperature</h3>
+            <div class="button-group">
+              <button
+                class="pos-option-btn"
+                data-category="temperature"
+                data-value="iced"
+              >
+                Iced
+              </button>
+              <button
+                class="pos-option-btn"
+                data-category="temperature"
+                data-value="hot"
+              >
+                Hot
+              </button>
+            </div>
+          </div>
+
+          <!-- Base Section -->
+          <div class="pos-section">
+            <h3 class="pos-subtitle">Base</h3>
+            <div class="button-group">
+              <button
+                class="pos-option-btn"
+                data-category="base"
+                data-value="matcha"
+              >
+                Matcha
+              </button>
+            </div>
+          </div>
+
+          <!-- Flavour Section -->
+          <div class="pos-section">
+            <h3 class="pos-subtitle">Flavour</h3>
+            <div class="button-group">
+              <button
+                class="pos-option-btn"
+                data-category="flavour"
+                data-value="strawberry"
+                data-min-day="1"
+              >
+                <img src="Assets/toppings/strawberry.png" alt="Strawberry" />
+              </button>
+
+              <button
+                class="pos-option-btn"
+                data-category="flavour"
+                data-value="blueberry"
+                data-min-day="2"
+              >
+                <img src="Assets/toppings/blueberry.png" alt="Blueberry" />
+              </button>
+
+              <button
+                class="pos-option-btn"
+                data-category="flavour"
+                data-value="vanilla"
+                data-min-day="2"
+              >
+                <img src="Assets/toppings/vanilla.png" alt="Vanilla" />
+              </button>
+            </div>
+          </div>
+
+          <!-- Topping Section -->
+          <div class="pos-section" id="toppingSection">
+            <h3 class="pos-subtitle">Topping</h3>
+            <div class="button-group">
+              <button
+                class="pos-option-btn"
+                data-category="topping"
+                data-value="coldfoam"
+                data-min-day="3"
+              >
+                Cold Foam
+              </button>
+              <button
+                class="pos-option-btn"
+                data-category="topping"
+                data-value="coconutcream"
+                data-min-day="3"
+              >
+                Coconut Cream
+              </button>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button id="submitBtn" class="submit-btn">Submit Order</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feedback Screen -->
+    <div id="feedbackScreen" class="screen">
+      <div class="alien-container">
+        <div class="alien"></div>
+        <div class="text-content">
+          <div class="text-bubble" id="feedbackBubble">
+            <p id="feedbackText">Thank you for the order!</p>
+          </div>
+          <div class="button-container">
+            <button id="nextBtn" class="order-btn">Next Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day Closed Screen -->
+    <div id="dayClosedScreen" class="screen simple-screen white-screen">
+      <div class="simple-content">
+        <h1 id="dayClosedText" class="simple-title">Day 1 Closed</h1>
+        <div class="simple-buttons">
+          <button id="startTomorrowBtn" class="order-btn">
+            Start Tomorrow
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instructions Modal -->
+    <div id="instructionsModal" class="modal hidden">
+      <div class="modal-content">
+        <h2>How to Play</h2>
+        <p><strong>Welcome to Planet Amtcha 🌿☕</strong></p>
+        <p>
+          You’ve started your first shift at an alien café on Planet Amtcha. The
+          locals are friendly, but their words come out in strange, jumbled
+          sounds. Your goal is to understand their orders and keep them happy.
+        </p>
+        <p>
+          - Watch the customer’s order bubble appear and listen carefully to
+          what they say.
+        </p>
+        <p>
+          - If the message is too unclear, press “Huh?” to hear a slightly
+          clearer version. It won’t give you the full answer, but it might help.
+        </p>
+        <p>
+          - Once you think you know the order, tap “Okay!” to open the POS
+          system.
+        </p>
+        <p>- Choose the right Temperature, Base, and any Flavor or Topping.</p>
+        <p>
+          - Press Submit to serve the drink and see how satisfied your customer
+          is.
+        </p>
+        <p>
+          Finish your shift with a satisfaction rating above 50% to move on to
+          the next day. The better you do, the closer you get to mastering the
+          language of Planet Amtcha.
+        </p>
+        <button id="closeInstructionsBtn" class="order-btn">Got it</button>
+      </div>
+    </div>
+
+    <audio
+      id="bgMusic"
+      src="Assets/Audio/lofi_nemuko-lofi-218436.mp3"
+      loop
+    ></audio>
+
+    <script src="orderSystem.js"></script>
+    <script src="satisfactionBar.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
